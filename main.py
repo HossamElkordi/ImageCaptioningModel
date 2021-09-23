@@ -18,4 +18,4 @@ if __name__ == '__main__':
     image_loader = ImageDatasetLoader(dataset=images, batch_size=args.batch_size)
 
     encoderModel = Encoder(model_path=args.model, device=device)
-    features = extract_features(model=encoderModel, dataloader=image_loader)
+    features = extract_features(model=encoderModel, dataloader=image_loader, device=device)

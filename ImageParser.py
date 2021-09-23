@@ -1,5 +1,5 @@
 import os
-import matplotlib.image as mpimg
+import cv2
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 
@@ -10,7 +10,7 @@ class ImageDataset(Dataset):
         data_transform = transforms.Compose([transforms.Resize(224), transforms.ToTensor()])
         self.data = []
         for file in os.listdir(img_folder):
-            img = data_transform(mpimg.imread(os.path.join(img_folder, file)))
+            img = data_transform(cv2.imread(filename=os.path.join(img_folder, file)))
             img.unsqueeze(0)
             self.data.append((file.split('.')[0], img))
 

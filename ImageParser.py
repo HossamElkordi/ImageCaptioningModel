@@ -13,7 +13,6 @@ class ImageDataset(Dataset):
         print('Loading Images...')
         for file in os.listdir(img_folder):
             img = data_transform(cv2.imread(filename=os.path.join(img_folder, file)))
-            img = torch.unsqueeze(input=img, dim=0)
             self.data.append((file.split('.')[0], img))
         print('Done')
 

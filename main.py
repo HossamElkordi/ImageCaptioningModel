@@ -2,6 +2,7 @@ import argparse
 import torch
 from encoder import Encoder
 from ImageParser import ImageDataset, ImageDatasetLoader
+from utils import extract_features
 
 if __name__ == '__main__':
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -16,4 +17,5 @@ if __name__ == '__main__':
     images = ImageDataset(args.image_folder)
     image_loader = ImageDatasetLoader(dataset=images, batch_size=args.batch_size)
 
-    encoderModule = Encoder(model_path=args.model, device=device)
+    encoderModel = Encoder(model_path=args.model, device=device)
+    features = extract_features(model=encoderModel, dataloader=image_loader)

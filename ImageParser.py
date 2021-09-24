@@ -8,7 +8,7 @@ from torchvision import transforms
 class ImageDataset(Dataset):
     def __init__(self, img_folder):
         super(ImageDataset, self).__init__()
-        data_transform = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor()])
+        data_transform = transforms.Compose([transforms.ToTensor(), transforms.Resize((224, 224))])
         self.data = []
         print('Loading Images...')
         for file in os.listdir(img_folder):

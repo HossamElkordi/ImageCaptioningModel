@@ -10,7 +10,6 @@ class Encoder(nn.Module):
         self.vgg = models.vgg16()
         self.vgg.classifier = self.vgg.classifier[:-3]
         self.vgg.load_state_dict(torch.load(model_path, map_location=device))
-        self.vgg.to(self.device)
 
     def forward(self, x):
         return self.vgg(x)

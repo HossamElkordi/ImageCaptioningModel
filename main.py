@@ -17,5 +17,5 @@ if __name__ == '__main__':
     images = ImageDataset(args.image_folder)
     image_loader = ImageDatasetLoader(dataset=images, batch_size=args.batch_size)
 
-    encoderModel = Encoder(model_path=args.model, device=device)
+    encoderModel = Encoder(model_path=args.model, device=device).to(device)
     features = extract_features(model=encoderModel, dataloader=image_loader, device=device)

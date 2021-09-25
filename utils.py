@@ -12,6 +12,6 @@ def extract_features(model, dataloader, device, out_path='features.pt'):
             features = model(images)
             for id_i, f_i in enumerate(zip(ids, features)):
                 features_map[id_i] = f_i
-        pbar.update()
+            pbar.update()
     torch.save(features_map, open(out_path, 'w'))
     return features_map
